@@ -8,14 +8,15 @@ IsLeapYear ← ◿2/+=0⊞◿4_100_400
 D ← ⨬(MonthDays|LeapMonthDays) IsLeapYear
 # Year Month Day ? ISODate
 SplitDate ← °[⊙⊙∘]⊜⋕⊸≠@-
-# ArvYear PastMonthsDays ? Year Month
-ProcessYear ← ⊃(-Epoch|↙⊓-D1:)
+# ArvYear PastMonthsDays ? Epoch Year Month
+ApplyEpoch ← ⊙(↙-1:)⊃-⋅D
 # ArvMonth ArvDay ? PastMonthsDays CurrMonthDays
 CalcDays ← ⨬(⊃(+@A⌊÷|-1◿)14|@+ -365)⊸>364+/+
 # ArvelieString ? ArvYear ArvMonth ArvDay
 ToString ← ⊂⊂⍜⊙:∩(⬚@0↙¯2°⋕)
-ISOtoArvelie ← ToString ⊙CalcDays ProcessYear SplitDate
-⍤"Incorrect conversion!" ≍"01D06" ISOtoArvelie "2007-02-18"
-⍤"Incorrect conversion!" ≍"02A00" ISOtoArvelie "2008-01-01"
-⍤"Incorrect conversion!" ≍"14+00" ISOtoArvelie "2020-12-30"
-⍤"Incorrect conversion!" ≍"14+01" ISOtoArvelie "2020-12-31"
+# ArvelieString ? Epoch ISOString
+ISOtoArvelie ← ToString ⊙CalcDays ApplyEpoch ⊙SplitDate
+⍤"Incorrect!" ≍"01D06" ISOtoArvelie 2006 "2007-02-18"
+⍤"Incorrect!" ≍"02A00" ISOtoArvelie 2006 "2008-01-01"
+⍤"Incorrect!" ≍"14+00" ISOtoArvelie 2006 "2020-12-30"
+⍤"Incorrect!" ≍"14+01" ISOtoArvelie 2006 "2020-12-31"
