@@ -6,7 +6,6 @@ IsLeapYear ← ◿2/+=0⊞◿4_100_400
 ⍤"2000 is a leap year" =1 IsLeapYear 2000
 ⍤"2024 is a leap year" =1 IsLeapYear 2024
 D ← ⨬(MonthDays|LeapMonthDays) IsLeapYear
-Epoch ← 2006
 # Year Month Day ? ISODate
 SplitDate ← °[⊙⊙∘]⊜⋕⊸≠@-
 # ArvYear PastMonthsDays ? Year Month
