@@ -1,4 +1,3 @@
-# Experimental!
 # ISO to Arvelie conversion
 # https://wiki.xxiivv.com/site/arvelie.html
 # IsLeap ? Year
